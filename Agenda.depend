@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1461343319 source:/home/vic/Documents/SEDA/act4/Agenda/src/arrayList.cpp
+
+1461727182 source:/home/vic/Documents/SEDA/act4/Agenda/main.cpp
+	<iostream>
+	<cstdlib>
+	"signatures.h"
+
+1461808335 /home/vic/Documents/SEDA/act4/Agenda/include/arrayList.h
+	<string>
+	<fstream>
+	<iostream>
+
+1461730967 /home/vic/Documents/SEDA/act4/Agenda/include/signature.h
+	<string>
+	<iostream>
+	<regex>
+
+1461806024 source:/home/vic/Documents/SEDA/act4/Agenda/src/signature.cpp
+	"signature.h"
+
+1461808118 source:/home/vic/Documents/SEDA/act4/Agenda/src/signatures.cpp
+	"signatures.h"
+
+1461805434 /home/vic/Documents/SEDA/act4/Agenda/include/signatures.h
+	<string>
+	<iostream>
+	<cstdlib>
+	"arrayList.h"
+	"signaturesMng.h"
+
+1461808373 source:/home/vic/Documents/SEDA/act4/Agenda/src/signaturesMng.cpp
+	"signaturesMng.h"
+
+1461807238 /home/vic/Documents/SEDA/act4/Agenda/include/signaturesMng.h
+	<exception>
+	"arrayList.h"
+	"signature.h"
+
