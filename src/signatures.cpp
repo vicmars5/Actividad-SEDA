@@ -16,7 +16,7 @@ void Signatures::showMenu() {
              << " 4.- Modificar una materia" << endl
              << " 5.- Eliminar materia" << endl
              << " 6.- Guardar cambios" << endl
-             << " 7.-Regresar al menu anterior" << endl
+             << " 7.- Regresar al menu anterior" << endl
              << "Elige una opcion: ";
         cin >> op;
         cin.ignore();
@@ -30,6 +30,12 @@ void Signatures::showMenu() {
             break;
         case SIG_SAVE:
             save();
+            break;
+        case SIG_SHOW:
+            show();
+            break;
+        case SIG_DELTE:
+            del();
             break;
         case SIG_EDIT:
             edit();
@@ -96,22 +102,45 @@ void Signatures::listS() {
     cin.get();
 }
 
-void Signatures::save() {
-    try {
-        signatures.save();
-    } catch(SignaturesMngException ex) {
-        cout << "No se pudo guardar la información. " << ex.what() << endl;
-    }
-    cout << "Se guardaron los cambios" << endl;
-    cin.get();
-}
-
-void Signatures::edit() {
+void Signatures::show() {
     Signature s;
     string txt;
     int pos;
 
     system(CLEAR);
+    cout << "\tMostrar Detalles de Materia" << endl << endl;
+    cout << " Acronimo de la materia: ";
+    getline(cin, txt);
+    cout << endl;
+
+    s.setAcronym(txt);
+    pos = signatures.findS(s);
+
+    if(pos >= 0) {
+        try {
+            s = signatures.get(pos);
+        } catch(SignaturesMngException ex) {
+            cout << "No se pudo obtener la asignatura" << endl << endl;
+            cin.get();
+        }
+
+        cout << " Nombre: " << s.getName() << endl
+             << " Acronimo: " << s.getAcronym() << endl
+             << " Maestro: " << s.getTeacher() << endl
+             << " Horario: " << s.getSchedule() << endl << endl;
+    } else {
+        cout << "No se encontro la asignatura" << endl;
+    }
+    cin.get();
+}
+
+void Signatures::del() {
+    Signature s;
+    string txt;
+    int pos;
+
+    system(CLEAR);
+    cout << "\tEliminando Materia" << endl << endl;
     cout << " Acronimo de la asignatura: ";
     getline(cin, txt);
     cout << endl;
@@ -125,7 +154,45 @@ void Signatures::edit() {
         } catch(SignaturesMngException ex) {
             cout << "No se pudo obtener la asignatura" << endl << endl;
         }
-        cout << "\t Añadiendo asignatura" << endl << endl;
+
+        cout << " Nombre: " << s.getName() << endl
+             << " Acronimo: " << s.getAcronym() << endl
+             << " Maestro: " << s.getTeacher() << endl
+             << " Horario: " << s.getSchedule() << endl << endl;
+        try {
+            signatures.del(pos);
+        } catch (SignaturesMngException ex) {
+            cout << "No se pudo eliminar la materia." << endl;
+            cin.get();
+        }
+
+    } else {
+        cout << "No se encontro la materia" << endl;
+    }
+
+    cin.get();
+}
+
+void Signatures::edit() {
+    Signature s;
+    string txt;
+    int pos;
+
+    system(CLEAR);
+    cout << "\tEditando Materia" << endl << endl;
+    cout << " Acronimo de la asignatura: ";
+    getline(cin, txt);
+    cout << endl;
+
+    s.setAcronym(txt);
+    pos = signatures.findS(s);
+
+    if(pos >= 0) {
+        try {
+            s = signatures.get(pos);
+        } catch(SignaturesMngException ex) {
+            cout << "No se pudo obtener la asignatura" << endl << endl;
+        }
 
         cout << " Nombre: " << s.getName() << endl
              << " Acronimo: " << s.getAcronym() << endl
@@ -148,7 +215,7 @@ void Signatures::edit() {
         getline(cin, txt);
         s.setSchedule(txt);
 
-        try{
+        try {
             signatures.edit(pos, s);
             cout << "Datos guardados" << endl;
             cout << " Nombre: " << s.getName() << endl
@@ -163,3 +230,14 @@ void Signatures::edit() {
     }
     cin.get();
 }
+
+void Signatures::save() {
+    try {
+        signatures.save();
+    } catch(SignaturesMngException ex) {
+        cout << "No se pudo guardar la información. " << ex.what() << endl;
+    }
+    cout << "Se guardaron los cambios" << endl;
+    cin.get();
+}
+

@@ -6,7 +6,7 @@
 #include <iostream> //Delete it when finish the work
 
 #define FIRST_POS -1
-#define ARR_FIRST_POS 0;
+#define ARR_FIRST_POS 0
 
 using namespace std;
 
@@ -101,7 +101,7 @@ void ArrayList<T>::insertData(const int& pos, const T& dato) {
 
     aux[i + 1] = dato;
 
-    for(i; i >= 0; i--){
+    for(i = i; i >= 0; i--){
         aux[i] = data[i];
     }
 
@@ -129,7 +129,7 @@ void ArrayList<T>::deleteData(const int& pos) {
         aux[i] = data[i];
     }
 
-    for(i; i <= newLast; i++){
+    for(i = i; i <= newLast; i++){
         aux[i] = data[i + 1];
     }
 
@@ -181,8 +181,7 @@ T ArrayList<T>::retrieve(const int& pos) {
 
 template <class T>
 int ArrayList<T>::findData(const T& bus) {
-    int i = ARR_FIRST_POS;
-    for(i; i <= last; i++) {
+    for(int i = (ARR_FIRST_POS) ; i <= last; i++) {
         if (data[i] == bus){
             return i;
         }
@@ -211,8 +210,7 @@ void ArrayList<T>::writeToDisk(const string& fName) {
     }
 
     if(file.is_open()) {
-        i = ARR_FIRST_POS;
-        for(i; i <= last; i++){
+        for(i = (ARR_FIRST_POS); i <= last; i++){
             file << data[i];
         }
 

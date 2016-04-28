@@ -36,8 +36,10 @@ public:
 
     void add();
     void listS();
-    void save();
+    void show();
     void edit();
+    void del();
+    void save();
 
 };
 

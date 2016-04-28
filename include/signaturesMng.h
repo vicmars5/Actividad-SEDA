@@ -20,8 +20,7 @@ public:
     }
 };
 
-class SignaturesMng
-{
+class SignaturesMng{
     private:
         static ArrayList<Signature> signatures;
     public:

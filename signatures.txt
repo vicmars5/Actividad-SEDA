@@ -6,3 +6,7 @@ Estructura de Datos
 EDA
 Alfredo Gutierrez
 7-9
+Teoria de la Computacion
+TDLC
+Ana Luisa
+9-11
