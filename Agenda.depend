@@ -1,39 +1,69 @@
 # depslib dependency file v1.0
 1461343319 source:/home/vic/Documents/SEDA/act4/Agenda/src/arrayList.cpp
 
-1461727182 source:/home/vic/Documents/SEDA/act4/Agenda/main.cpp
+1461818403 source:/home/vic/Documents/SEDA/act4/Agenda/main.cpp
 	<iostream>
 	<cstdlib>
-	"signatures.h"
+	"signatureView.h"
+	"homeworkView.h"
 
-1461810497 /home/vic/Documents/SEDA/act4/Agenda/include/arrayList.h
+1461818298 /home/vic/Documents/SEDA/act4/Agenda/include/arrayList.h
 	<string>
 	<fstream>
 	<iostream>
 
-1461730967 /home/vic/Documents/SEDA/act4/Agenda/include/signature.h
+1461815743 /home/vic/Documents/SEDA/act4/Agenda/include/signature.h
 	<string>
 	<iostream>
-	<regex>
 
-1461806024 source:/home/vic/Documents/SEDA/act4/Agenda/src/signature.cpp
+1461816786 source:/home/vic/Documents/SEDA/act4/Agenda/src/signature.cpp
 	"signature.h"
 
-1461810147 source:/home/vic/Documents/SEDA/act4/Agenda/src/signatures.cpp
+1461815002 source:/home/vic/Documents/SEDA/act4/Agenda/src/signatures.cpp
 	"signatures.h"
 
-1461809433 /home/vic/Documents/SEDA/act4/Agenda/include/signatures.h
+1461815178 /home/vic/Documents/SEDA/act4/Agenda/include/signatures.h
 	<string>
 	<iostream>
 	<cstdlib>
 	"arrayList.h"
-	"signaturesMng.h"
+	"signature.h"
 
 1461808373 source:/home/vic/Documents/SEDA/act4/Agenda/src/signaturesMng.cpp
 	"signaturesMng.h"
 
-1461808935 /home/vic/Documents/SEDA/act4/Agenda/include/signaturesMng.h
+1461813819 /home/vic/Documents/SEDA/act4/Agenda/include/signaturesMng.h
 	<exception>
 	"arrayList.h"
 	"signature.h"
+
+1461817877 source:/home/vic/Documents/SEDA/act4/Agenda/src/homework.cpp
+	"homework.h"
+
+1461817891 /home/vic/Documents/SEDA/act4/Agenda/include/homework.h
+	<string>
+	<iostream>
+
+1461819782 source:/home/vic/Documents/SEDA/act4/Agenda/src/homeworkView.cpp
+	"homeworkView.h"
+
+1461818985 /home/vic/Documents/SEDA/act4/Agenda/include/homeworkView.h
+	<string>
+	<iostream>
+	<cstdlib>
+	"arrayList.h"
+	"homework.h"
+
+1461812000 /home/vic/Documents/SEDA/act4/Agenda/include/manager.h
+	"arrayList.h"
+
+1461815485 /home/vic/Documents/SEDA/act4/Agenda/include/signatureView.h
+	<string>
+	<iostream>
+	<cstdlib>
+	"arrayList.h"
+	"signature.h"
+
+1461819892 source:/home/vic/Documents/SEDA/act4/Agenda/src/signatureView.cpp
+	"signatureView.h"
 

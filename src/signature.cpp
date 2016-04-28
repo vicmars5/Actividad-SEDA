@@ -42,7 +42,6 @@ void Signature::setSchedule(const string& s) {
 bool Signature::operator==(const Signature& s) const {
     return (this->acronym == s.acronym);
 }
-
 ostream& operator << (ostream& o, const Signature& s) {
     o << s.name << endl
       << s.acronym << endl

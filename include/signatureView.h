@@ -1,5 +1,5 @@
-#ifndef SIGNATURES_H
-#define SIGNATURES_H
+#ifndef SIGNATUREVIEW_H
+#define SIGNATUREVIEW_H
 
 #include <string>
 #include <iostream>
@@ -27,7 +27,8 @@
 
 using namespace std;
 
-class Signatures {
+class SignatureView
+{
 private:
     ArrayList<Signature> signtrs;
 
@@ -38,8 +39,8 @@ private:
     void del();
     void save();
 public:
-    Signatures();
+    SignatureView();
     void showMenu();
 };
 
-#endif // SIGNATURES_H
+#endif // SIGNATUREVIEW_H

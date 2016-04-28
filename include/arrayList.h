@@ -36,22 +36,24 @@ public:
     bool isEmpty();
     bool isValidPos(const int& pos);
 
-    void insertData(const int& pos, const T& dato);
-    void deleteData(const int& pos);
+    void insertD(const int& pos, const T& dato);
+    void add(const T& d);
+    void del(const int& pos);
+    void edit(const int& pos, const T& d);
 
     int getFirstPos();
     int getLastPos();
     int& getPrevPos(const int& pos);
     int& getNextPos(const int& pos);
 
-    T retrieve(const int& pos);
+    T get(const int& pos);
 
-    int findData(const T& bus);
+    int findD(const T& bus);
 
     void deleteAll();
 
-    void writeToDisk(const string& fName);
-    void readFromDisk(const string& fName);
+    void save(const string& fName);
+    void load(const string& fName);
 
     int length();
 
@@ -86,7 +88,7 @@ int ArrayList<T>::length() {
 }
 
 template <class T>
-void ArrayList<T>::insertData(const int& pos, const T& dato) {
+void ArrayList<T>::insertD(const int& pos, const T& dato) {
     int i;
 
     T* aux = new T[length() + 1]; //New array
@@ -95,13 +97,13 @@ void ArrayList<T>::insertData(const int& pos, const T& dato) {
         throw ArrayListException("NO VALID POSTION");
     }
 
-    for(i = last; i > pos; i--){
+    for(i = last; i > pos; i--) {
         aux[i + 1] = data[i];
     }
 
     aux[i + 1] = dato;
 
-    for(i = i; i >= 0; i--){
+    for(i = i; i >= 0; i--) {
         aux[i] = data[i];
     }
 
@@ -112,7 +114,16 @@ void ArrayList<T>::insertData(const int& pos, const T& dato) {
 }
 
 template <class T>
-void ArrayList<T>::deleteData(const int& pos) {
+void ArrayList<T>::add(const T& d) {
+    try {
+        insertD(getLastPos(), d);
+    } catch(ArrayListException ex) {
+        throw ArrayListException(ex.what());
+    }
+}
+
+template <class T>
+void ArrayList<T>::del(const int& pos) {
     int i;
     int newLast = last - 1;
     T* aux = new T[length() - 1];
@@ -125,17 +136,27 @@ void ArrayList<T>::deleteData(const int& pos) {
         throw ArrayListException("INVALID POSITION");
     }
 
-    for(i = 0; i < pos; i++){
+    for(i = 0; i < pos; i++) {
         aux[i] = data[i];
     }
 
-    for(i = i; i <= newLast; i++){
+    for(i = i; i <= newLast; i++) {
         aux[i] = data[i + 1];
     }
 
     delete[] data;
     data = aux;
     last--;
+}
+
+template <class T>
+void ArrayList<T>::edit(const int& pos, const T& d) {
+    try {
+        insertD(pos, d);
+        del(pos);
+    } catch(ArrayListException ex) {
+        throw ArrayListException(ex.what());
+    }
 }
 
 template <class T>
@@ -169,7 +190,7 @@ int& ArrayList<T>::getNextPos(const int& pos) {
 }
 
 template <class T>
-T ArrayList<T>::retrieve(const int& pos) {
+T ArrayList<T>::get(const int& pos) {
     if(isEmpty()) {
         throw ArrayListException("LIST EMPTY, ERROR TRYING GET DATA");
     }
@@ -180,9 +201,9 @@ T ArrayList<T>::retrieve(const int& pos) {
 }
 
 template <class T>
-int ArrayList<T>::findData(const T& bus) {
+int ArrayList<T>::findD(const T& bus) {
     for(int i = (ARR_FIRST_POS) ; i <= last; i++) {
-        if (data[i] == bus){
+        if (data[i] == bus) {
             return i;
         }
     }
@@ -192,16 +213,15 @@ int ArrayList<T>::findData(const T& bus) {
 
 template <class T>
 void ArrayList<T>::deleteAll() {
-    if(last == FIRST_POS){
+    if(last == FIRST_POS) {
         last = FIRST_POS;
         delete data;
         data = new T[FIRST_POS + 1];
     }
 }
 
-
 template <class T>
-void ArrayList<T>::writeToDisk(const string& fName) {
+void ArrayList<T>::save(const string& fName) {
     ofstream file;
     file.open(fName.c_str(), ios_base::out);
     int i;
@@ -210,7 +230,7 @@ void ArrayList<T>::writeToDisk(const string& fName) {
     }
 
     if(file.is_open()) {
-        for(i = (ARR_FIRST_POS); i <= last; i++){
+        for(i = (ARR_FIRST_POS); i <= last; i++) {
             file << data[i];
         }
 
@@ -221,20 +241,20 @@ void ArrayList<T>::writeToDisk(const string& fName) {
 }
 
 template <class T>
-void ArrayList<T>::readFromDisk(const string& fName) {
+void ArrayList<T>::load(const string& fName) {
     ifstream file;
     file.open(fName.c_str(), ios_base::in);
 
     T d;
 
     if(!file.is_open()) {
-        throw ArrayListException("ERROR, CAN'T READ THE DISK");
+        return;
     }
 
 
     try {
         while(file >> d) {
-            insertData(getLastPos(), d);
+            insertD(getLastPos(), d);
         }
     } catch (ArrayListException ex) {
         ArrayListException("ERROR, CAN'T INSERT DISK DATA");

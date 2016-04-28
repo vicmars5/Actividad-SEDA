@@ -1,10 +1,11 @@
-#include "signatures.h"
+#include "signatureView.h"
 
-Signatures::Signatures() {
+SignatureView::SignatureView()
+{
     signtrs.load(SIG_FILE);
 }
 
-void Signatures::showMenu() {
+void SignatureView::showMenu() {
     int op;
 
     do {
@@ -48,7 +49,7 @@ void Signatures::showMenu() {
 
     } while(op != SIG_EXIT);
 }
-void Signatures::add() {
+void SignatureView::add() {
     Signature s;
     string txt;
     system(CLEAR);
@@ -82,7 +83,7 @@ void Signatures::add() {
     cin.get();
 }
 
-void Signatures::listS() {
+void SignatureView::listS() {
     Signature s;
 
     system(CLEAR);
@@ -102,7 +103,7 @@ void Signatures::listS() {
     cin.get();
 }
 
-void Signatures::show() {
+void SignatureView::show() {
     Signature s;
     string txt;
     int pos;
@@ -134,7 +135,7 @@ void Signatures::show() {
     cin.get();
 }
 
-void Signatures::del() {
+void SignatureView::del() {
     Signature s;
     string txt;
     int pos;
@@ -173,7 +174,7 @@ void Signatures::del() {
     cin.get();
 }
 
-void Signatures::edit() {
+void SignatureView::edit() {
     Signature s;
     string txt;
     int pos;
@@ -231,13 +232,12 @@ void Signatures::edit() {
     cin.get();
 }
 
-void Signatures::save() {
+void SignatureView::save() {
     try {
         signtrs.save(SIG_FILE);
     } catch(ArrayListException ex) {
         cout << "No se pudo guardar la información. " << ex.what() << endl;
     }
-    cout << "Se guardaron los cambios" << endl;
+    cout << "Se guardaron los cambios. Presione ENTRAR para continuar..." << endl;
     cin.get();
 }
-

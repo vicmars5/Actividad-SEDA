@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "signatures.h"
-
+#include "signatureView.h"
+#include "homeworkView.h"
 
 #ifdef __unix__
  #define CLEAR "clear"
@@ -21,14 +21,16 @@ using namespace std;
 int main() {
     int op;
 
-    Signatures signatures;
+    SignatureView signatures;
+    HomeworkView homeworks;
     do {
         system(CLEAR);
         cout << "\tMEN\xe9 PRINCIPAL" << endl
              << " 1. Evaluaci\xa2n del curso" << endl
              << " 2. Gesti\xa2n de materias" << endl
              << " 3. Gesti\xa2n de tareas" << endl
-             << " 4. Salir" << endl;
+             << " 4. Salir" << endl
+             << " Opcion: ";
         cin >> op;
         cin.ignore();
 
@@ -41,6 +43,7 @@ int main() {
             break;
 
         case OP_HWORK_MNG:
+            homeworks.showMenu();
             break;
 
         case EXIT:
